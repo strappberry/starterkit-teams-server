@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Verificar si la carpeta node_modules existe
+if [ -d "node_modules" ]; then
+    # Verificar si Bun está instalado
+    if command -v bun >/dev/null 2>&1; then
+        echo "Bun encontrado, ejecutando build con Bun."
+        bun run build
+    # Verificar si Yarn está instalado
+    elif command -v yarn >/dev/null 2>&1; then
+        echo "Yarn encontrado, ejecutando build con Yarn."
+        yarn build
+    else
+        echo "Bun y Yarn no encontrados, ejecutando build con npm."
+        npm run build
+    fi
+else
+    echo "Carpeta node_modules no encontrada. Omitiendo el paso de build."
+fi

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Extract the short commit hash and date
+COMMIT_HASH=$(git log -n 1 --pretty=format:%h)
+COMMIT_DATE=$(git log -n 1 --pretty=format:%cd --date=short)
+
+# Replace in the .env file
+sed -i -e "s/^VERSION_HASH=.*/VERSION_HASH=${COMMIT_HASH}/" -e "s/^VERSION_LAST_UPDATE=.*/VERSION_LAST_UPDATE=${COMMIT_DATE}/" .env

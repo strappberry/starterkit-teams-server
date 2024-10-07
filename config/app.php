@@ -123,4 +123,15 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+     |--------------------------------------------------------------------------
+     | Version
+     |--------------------------------------------------------------------------
+     */
+
+    'version' => [
+        'semantic' => env('VERSION', '0.0.1'),
+        'hash' => env('VERSION_HASH', ''),
+        'last_update' => env('VERSION_LAST_UPDATE', ''),
+    ],
 ];

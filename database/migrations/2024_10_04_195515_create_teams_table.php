@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->index();
             $table->string('name');
             $table->boolean('personal_team');
+            $table->boolean('main_team')->default(false);
             $table->timestamps();
         });
     }

@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Se ejecutara Pint solo en los archivos que se encuentren en el stage
+files=$(git diff --cached --name-only --diff-filter=ACM -- '*.php')
+
+# Si hay archivos PHP en el stage, ejecutar Pint
+if [ -z "$files" ]; then
+    echo "No se encontraron archivos PHP en el stage. Omitiendo el paso de Pint."
+else
+    vendor/bin/pint $files -q
+    git add $files
+fi
+
+echo "Ejecutando tests..."
+
+./vendor/bin/pest
+
+# Check if the tests passed
+if [ $? -ne 0 ]; then
+    echo "Los tests fallaron. Corrige los errores y vuelve a intentarlo."
+    exit 1
+fi
+
+exit 0

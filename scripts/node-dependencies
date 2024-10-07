@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if command -v bun >/dev/null 2>&1; then
+    echo "Bun encontrado, ejecutando npm install con Bun."
+    bun install
+elif command -v yarn >/dev/null 2>&1; then
+    echo "Bun no encontrado, ejecutando npm install con Yarn."
+    yarn install
+else
+    echo "Ni Bun ni Yarn encontrados, ejecutando npm install con npm."
+    npm install
+fi
