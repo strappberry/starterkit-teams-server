@@ -31,7 +31,7 @@ format_code:
 npm_install:
 	$(CMD_INSTALL_NODE)
 
-npm_build:
+build_assets:
 	$(CMD_BUILD_NODE)
 
 copy_env:
@@ -68,5 +68,5 @@ install: copy_env composer_prod artisan_key npm_install suggestions_production
 
 install_dev: copy_env composer_dev artisan_key npm_install install_precommit
 
-update: pull composer_prod migrate_force npm_build artisan_clear artisan_optimize
+update: pull composer_prod migrate_force build_assets set_version artisan_clear artisan_optimize
 

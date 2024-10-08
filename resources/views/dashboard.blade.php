@@ -6,6 +6,5 @@
         <x-ui.badge>
             {{ auth()->user()->email }}
         </x-ui.badge>
-        {{ getPermissionsTeamId() }}
     </x-card>
 </x-first-dashboard>
