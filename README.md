@@ -43,6 +43,9 @@ make install_dev
 - Crea el archivo _.env_
 - General la clave app_key de laravel
 
+`make build_assets`
+- Construye los archivos css y js del proyecto (app.js, app.css)
+
 ## Componentes
 
 #### Card
