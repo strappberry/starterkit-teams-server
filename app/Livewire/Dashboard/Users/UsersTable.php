@@ -5,11 +5,13 @@ namespace App\Livewire\Dashboard\Users;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
+use Livewire\Attributes\Locked;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 
 class UsersTable extends DataTableComponent
 {
+    #[Locked]
     public Team $team;
 
     public function builder(): Builder
