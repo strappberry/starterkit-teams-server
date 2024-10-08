@@ -29,8 +29,8 @@ class UserForm extends Form
         ];
 
         if (! $this->id) {
-            $rules['email'][] = ['unique:users,email'];
-            $rules['password'][] = ['required', 'string', 'min:8'];
+            $rules['email'][] = 'unique:users';
+            $rules['password'] = ['required', 'string', 'min:8'];
         }
 
         return $rules;

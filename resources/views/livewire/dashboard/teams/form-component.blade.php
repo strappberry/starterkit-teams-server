@@ -42,7 +42,7 @@
                     {{ $team->owner->name }}
                 </strong>
                 <x-ui.badge>
-                    {{ auth()->user()->email }}
+                    {{ $team->owner->email }}
                 </x-ui.badge>
             </div>
         @endif
