@@ -26,6 +26,13 @@ return [
             'route' => 'dashboard',
         ],
         [
+            'label' => 'panel.equipos.equipos',
+            'icon' => 'building-office-2',
+            'route' => 'dashboard.teams.index',
+            'active_route' => 'dashboard.teams.*',
+            'permission' => 'ver equipos',
+        ],
+        [
             'label' => 'panel.usuarios.usuarios',
             'icon' => 'users',
             'route' => 'dashboard.users.index',

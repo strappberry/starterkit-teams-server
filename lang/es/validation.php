@@ -283,6 +283,12 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'nombre',
+        'password' => 'contraseña',
+        'admin_name' => 'nombre de administrador',
+        'admin_email' => 'email de administrador',
+        'admin_password' => 'contraseña de administrador',
+    ],
 
 ];

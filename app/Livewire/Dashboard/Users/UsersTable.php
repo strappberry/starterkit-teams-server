@@ -53,6 +53,18 @@ class UsersTable extends DataTableComponent
 
     public function delete($id)
     {
-        return User::find($id)->delete();
+        $user = User::find($id);
+
+        if (! $user) {
+            return;
+        }
+
+        if ($user->teams()->count() > 1) {
+            $otherTeam = $user->teams()->where('team_id', '!=', $this->team->id)->first();
+            $user->switchTeam($otherTeam);
+            $user->teams()->detach($this->team->id);
+        } else {
+            $user->delete();
+        }
     }
 }

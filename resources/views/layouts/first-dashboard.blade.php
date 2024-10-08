@@ -218,7 +218,7 @@
             <!-- Page Content -->
             <main id="page-content" class="flex max-w-full flex-auto flex-col pt-20 lg:pt-0">
                 <!-- Page Section -->
-                <div class="mx-auto w-full max-w-7xl p-4 lg:p-8">
+                <div class="mx-auto w-full p-4 lg:p-8">
                     {{ $slot }}
                 </div>
                 <!-- END Page Section -->

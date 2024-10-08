@@ -24,8 +24,6 @@
         <div
             class="p-1 mt-1 bg-white dark:bg-gray-800 border dark:border-gray-500 rounded-md border-gray-200 text-neutral-700">
             @if (Auth::user()->allTeams()->count() > 1)
-                <div class="border-t border-gray-200 dark:border-gray-600"></div>
-
                 <div class="block px-4 py-2 text-xs text-gray-400">
                     {{ __('Switch Teams') }}
                 </div>

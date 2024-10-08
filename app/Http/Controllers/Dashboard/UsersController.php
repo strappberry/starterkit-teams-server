@@ -23,8 +23,14 @@ class UsersController extends Controller
 
     public function edit(User $user)
     {
+        $currentTeam = request()->user()->currentTeam;
+
+        if (! $user->belongsToTeam($currentTeam)) {
+            return to_route('dashboard.users.index');
+        }
+
         return view('dashboard.users.edit', compact('user'), [
-            'team' => request()->user()->currentTeam,
+            'team' => $currentTeam,
         ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Dashboard\Users;
 
+use App\Actions\Roles\ResolvePermissionList;
 use App\Enums\Roles;
 use App\Livewire\Forms\UserForm;
 use App\Models\Team;
@@ -34,19 +35,11 @@ class FormComponent extends Component
     }
 
     #[Computed]
-    protected function permissions()
+    protected function permissions(): array
     {
-        $permissions = config('roles.permissions');
-        $mainTeamModules = config('roles.main_team_modules', []);
+        $resolver = app(ResolvePermissionList::class);
 
-        // En caso de que el team no sea el principal se removemos los modulos exclusivos
-        if (! $this->team->main_team) {
-            $permissions = array_filter($permissions, function ($key) use ($mainTeamModules) {
-                return ! in_array($key, $mainTeamModules);
-            }, ARRAY_FILTER_USE_KEY);
-        }
-
-        return $permissions;
+        return $resolver->handle($this->team->main_team);
     }
 
     public function updatedFormRole()
