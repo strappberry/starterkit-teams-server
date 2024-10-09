@@ -3,6 +3,7 @@ COMPOSER = composer
 CMD_INSTALL_NODE=./scripts/node-dependencies
 CMD_BUILD_NODE=./scripts/node-build
 SUPERVISOR = starter_worker:*
+REPO_UPSTREAM = git@github.com:strappberry/starterkit-teams-server.git
 
 composer_prod:
 	$(COMPOSER) install --no-interaction --prefer-dist --optimize-autoloader --no-dev
@@ -45,6 +46,11 @@ migrate_force:
 
 supervisor_restart:
 	sudo supervisorctl restart $(SUPERVISOR)
+
+upstream:
+	git remote add upstream $(REPO_UPSTREAM)
+    git fetch upstream
+    git rebase upstream/main
 
 suggestions_production:
 	@echo "\033[0;31m------------------------------------------------------"

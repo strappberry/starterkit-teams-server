@@ -46,6 +46,10 @@ make install_dev
 `make build_assets`
 - Construye los archivos css y js del proyecto (app.js, app.css)
 
+`make upstream`
+- Vincula la historia del repositorio actual al respositorio origen el starter
+- DEBERA TENER ACCESO AL REPOSITORIO ORIGINAL PARA PODER OBTENER LAS NUEVAS CARACTERISTICAS DEL STARTER
+
 ## Componentes
 
 #### Card
