@@ -49,8 +49,8 @@ supervisor_restart:
 
 upstream:
 	git remote add upstream $(REPO_UPSTREAM)
-    git fetch upstream
-    git rebase upstream/main
+	git fetch upstream
+	git rebase upstream/main
 
 suggestions_production:
 	@echo "\033[0;31m------------------------------------------------------"
