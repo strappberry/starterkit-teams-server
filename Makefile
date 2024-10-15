@@ -26,6 +26,9 @@ artisan_optimize:
 	$(PHP) artisan route:cache
 	$(PHP) artisan view:cache
 
+artisan_storage_link:
+	$(PHP) artisan storage:link
+
 format_code:
 	./vendor/bin/pint
 
@@ -70,9 +73,8 @@ suggestions_production:
 	@echo "make update"
 	@echo "------------------------------------------------------"
 
-install: copy_env composer_prod artisan_key npm_install suggestions_production
+install: copy_env composer_prod artisan_key artisan_storage_link npm_install suggestions_production
 
-install_dev: copy_env composer_dev artisan_key npm_install install_precommit
+install_dev: copy_env composer_dev artisan_key artisan_storage_link npm_install install_precommit
 
 update: pull composer_prod migrate_force build_assets set_version artisan_clear artisan_optimize
-

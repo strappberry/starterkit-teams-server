@@ -2,9 +2,9 @@
 
 namespace App\Livewire\Dashboard\Users;
 
-use App\Actions\Roles\ResolvePermissionList;
 use App\Enums\Roles;
 use App\Livewire\Forms\UserForm;
+use App\Models\Module;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -37,29 +37,25 @@ class FormComponent extends Component
     #[Computed]
     protected function permissions(): array
     {
-        $resolver = app(ResolvePermissionList::class);
-
-        return $resolver->handle($this->team->main_team);
+        return Module::query()
+            ->whereMainTeam($this->team->main_team)
+            ->get()
+            ->modulesPermissions();
     }
 
     public function updatedFormRole()
     {
-        $modules = config('roles.roles_modules.'.$this->form->role, []);
-        $permissionList = [];
+        $modules = Module::query()
+            ->whereMainTeam($this->team->main_team)
+            ->whereRole(Roles::from($this->form->role))
+            ->get();
 
-        foreach ($modules as $module) {
-            $permissionList = array_merge(
-                $permissionList,
-                config('roles.permissions.'.$module, [])
-            );
-        }
-
-        $this->form->permissions = $permissionList;
+        $this->form->permissions = $modules->permissionsList();
     }
 
     public function setPermissionsForModule($module)
     {
-        $permissions = config('roles.permissions.'.$module, []);
+        $permissions = Module::whereSlug($module)->first()->permissions ?? [];
         $missingPermissions = array_diff($permissions, $this->form->permissions);
 
         if (empty($missingPermissions)) {

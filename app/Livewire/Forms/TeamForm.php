@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Forms;
 
-use App\Actions\Roles\ResolvePermissionList;
 use App\Enums\Roles;
+use App\Models\Module;
 use App\Models\Team;
 use App\Models\User;
 use Livewire\Form;
@@ -24,6 +24,10 @@ class TeamForm extends Form
     public $admin_email;
 
     public $admin_password;
+
+    public $main_team = false;
+
+    public $modules = [];
 
     public function rules(): array
     {
@@ -60,6 +64,8 @@ class TeamForm extends Form
             ],
         );
 
+        $team->modules()->sync($this->modules);
+
         if (! $this->id) {
             // Crear los roles para el equipo
             foreach (Roles::teamRoles() as $role) {
@@ -73,11 +79,13 @@ class TeamForm extends Form
                 );
             }
 
-            // Sincronizar todos los permisos al dueño del equipo
-            setPermissionsTeamId($team->id);
-            $resolver = app(ResolvePermissionList::class);
-            $team->owner->syncPermissions($resolver->plain(false));
         }
+
+        // Sincronizar todos los permisos al dueño del equipo
+        setPermissionsTeamId($team->id);
+        $team->owner->syncPermissions(
+            Module::whereIn('id', $this->modules)->get()->modulesPermissions()
+        );
 
         return $team;
     }

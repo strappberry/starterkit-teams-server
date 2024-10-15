@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Module;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 
@@ -12,8 +13,10 @@ class PermissionsSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach (config('roles.permissions') as $module => $permissions) {
-            foreach ($permissions as $permission) {
+        $modules = Module::all();
+
+        foreach ($modules as $module) {
+            foreach ($module->permissions as $permission) {
                 Permission::updateOrCreate([
                     'name' => $permission,
                 ], [

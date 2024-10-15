@@ -18,6 +18,10 @@ make update
 
 ### Instalación en desarrollo
 
+> Si trabajas en Windows asegurate de usar **git bash**
+> Debes instalar make, puedes usar choco
+> `choco install make`
+
 ```bash
 make install_dev
 ```

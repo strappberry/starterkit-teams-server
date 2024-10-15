@@ -17,6 +17,7 @@ Route::middleware([
     Route::view('/dashboard', 'dashboard')->name('dashboard');
 
     Route::prefix('dashboard/teams')
+        ->middleware(['module:equipos'])
         ->as('dashboard.teams.')
         ->controller(TeamsController::class)
         ->group(function () {
@@ -26,6 +27,7 @@ Route::middleware([
         });
 
     Route::prefix('dashboard/users')
+        ->middleware(['module:usuarios'])
         ->as('dashboard.users.')
         ->controller(UsersController::class)
         ->group(function () {

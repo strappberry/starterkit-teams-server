@@ -26,6 +26,10 @@ return [
         'nombre' => 'Nombre',
     ],
 
+    'modulos' => [
+        'modulos' => 'Módulos',
+    ],
+
     'usuarios' => [
         'agregar' => 'Agregar usuario',
         'desea_eliminar' => '¿Desea eliminar el usuario?',

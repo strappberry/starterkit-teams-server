@@ -33,25 +33,16 @@ return [
 
     /*
      |--------------------------------------------------------------------------
-     | Modulos y permisos
+     | Permisos especiales para modulos
      |--------------------------------------------------------------------------
      |
-     | Aqui se definen los modulos y permisos que tendra el sistema
-     | El primer nivel del array son los modulos y el segundo nivel son los permisos asociados a cada modulo.
+     | Define aqui los permisos especiales que deberían tener los modulos.
+     |
+     | Ejemplo:
+     | 'clientes' => ['reordenar', 'enviar'],
      |
      */
     'permissions' => [
-        'equipos' => [
-            'ver equipos',
-            'crear equipos',
-            'editar equipos',
-            'eliminar equipos',
-        ],
-        'usuarios' => [
-            'ver usuarios',
-            'crear usuarios',
-            'editar usuarios',
-            'eliminar usuarios',
-        ],
+        //
     ],
 ];

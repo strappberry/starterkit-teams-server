@@ -10,6 +10,19 @@
             <x-input-error for="form.name" class="mt-2" />
         </div>
 
+        <div class="space-y-2">
+            <x-label for="modules" value="{{ __('panel.modulos.modulos') }}" />
+
+            @foreach ($this->modules as $module)
+                <label class="flex items-center">
+                    <x-checkbox wire:model="form.modules" :value="$module->id" />
+                    <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">
+                        {{ $module->name }}
+                    </span>
+                </label>
+            @endforeach
+        </div>
+
         @if (!$team)
             <div class="border rounded p-4 space-y-4">
                 <div>

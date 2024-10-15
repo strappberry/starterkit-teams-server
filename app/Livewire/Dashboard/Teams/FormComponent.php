@@ -3,9 +3,12 @@
 namespace App\Livewire\Dashboard\Teams;
 
 use App\Livewire\Forms\TeamForm;
+use App\Models\Module;
 use App\Models\Team;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 class FormComponent extends Component
@@ -22,8 +25,18 @@ class FormComponent extends Component
                 'user_id' => $this->team->user_id,
                 'name' => $this->team->name,
                 'personal_team' => $this->team->personal_team,
+                'main_team' => $this->team->main_team,
+                'modules' => $this->team->modules->pluck('id')->toArray(),
             ]);
         }
+    }
+
+    #[Computed]
+    protected function modules(): Collection
+    {
+        return Module::query()
+            ->whereMainTeam($this->form->main_team)
+            ->get();
     }
 
     public function save(): void

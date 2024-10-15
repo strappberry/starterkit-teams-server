@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enums\Roles;
+use App\Models\Module;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -29,6 +30,7 @@ class UsersTableSeeder extends Seeder
             'password' => '$2y$12$Tyo08ZHT42LG0.8QvrQLtuq1uR.8Z4bak7Jd/Wdotf5E7irJy8NxG',
         ]);
 
+        /** @var \App\Models\Team $team */
         $team = $contacto->ownedTeams()->updateOrCreate([
             'id' => 1,
         ], [
@@ -36,6 +38,10 @@ class UsersTableSeeder extends Seeder
             'personal_team' => true,
             'main_team' => true,
         ]);
+
+        $team->modules()->sync(
+            Module::all()->pluck('id')->toArray()
+        );
 
         $hibran->teams()->attach($team->id);
 
@@ -53,11 +59,7 @@ class UsersTableSeeder extends Seeder
         $hibran->assignRole(Roles::SUPER_ADMIN->value);
 
         // Asignar todos los permisos a los usuarios
-        $permissionLists = [];
-        foreach (config('roles.permissions') as $modulo => $permisos) {
-            $permissionLists = array_merge($permissionLists, $permisos);
-        }
-
+        $permissionLists = Module::all()->permissionsList();
         $contacto->syncPermissions($permissionLists);
         $hibran->syncPermissions($permissionLists);
     }

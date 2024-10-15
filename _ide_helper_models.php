@@ -39,12 +39,44 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property bool $main_team
+ * @property array $roles
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read mixed $permissions
+ * @method static \App\Models\Collections\ModulesCollection<int, static> all($columns = ['*'])
+ * @method static \Database\Factories\ModuleFactory factory($count = null, $state = [])
+ * @method static \App\Models\Collections\ModulesCollection<int, static> get($columns = ['*'])
+ * @method static \Illuminate\Database\Eloquent\Builder|Module newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Module newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Module query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Module whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Module whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Module whereMainTeam($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Module whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Module whereRole(\App\Enums\Roles $role)
+ * @method static \Illuminate\Database\Eloquent\Builder|Module whereRoles($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Module whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Module whereUpdatedAt($value)
+ */
+	class Module extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property int $user_id
  * @property string $name
  * @property bool $personal_team
  * @property int $main_team
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Collections\ModulesCollection<int, \App\Models\Module> $modules
+ * @property-read int|null $modules_count
  * @property-read \App\Models\User|null $owner
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TeamInvitation> $teamInvitations
  * @property-read int|null $team_invitations_count
