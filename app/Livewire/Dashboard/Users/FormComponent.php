@@ -37,15 +37,14 @@ class FormComponent extends Component
     #[Computed]
     protected function permissions(): array
     {
-        return Module::query()
-            ->whereMainTeam($this->team->main_team)
-            ->get()
+        return $this->team
+            ->modules
             ->modulesPermissions();
     }
 
     public function updatedFormRole()
     {
-        $modules = Module::query()
+        $modules = $this->team->modules()
             ->whereMainTeam($this->team->main_team)
             ->whereRole(Roles::from($this->form->role))
             ->get();
