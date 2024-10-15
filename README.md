@@ -54,6 +54,23 @@ make install_dev
 - Vincula la historia del repositorio actual al respositorio origen el starter
 - DEBERA TENER ACCESO AL REPOSITORIO ORIGINAL PARA PODER OBTENER LAS NUEVAS CARACTERISTICAS DEL STARTER
 
+## Layouts
+
+```blade
+<x-first-dashboard>
+    {{ Breadcrumbs::render('dashboard') }}
+
+    aqui va tu contenido
+</x-first-dashboard>
+
+
+<x-second-dashboard>
+    {{ Breadcrumbs::render('dashboard') }}
+
+    aqui va tu contenido
+</x-second-dashboard>
+```
+
 ## Componentes
 
 #### Card
