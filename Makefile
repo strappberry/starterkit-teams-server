@@ -50,10 +50,17 @@ migrate_force:
 supervisor_restart:
 	sudo supervisorctl restart $(SUPERVISOR)
 
-upstream:
+set_upstream:
 	git remote add upstream $(REPO_UPSTREAM)
 	git fetch upstream
 	git rebase upstream/main
+
+fetch_upstream:
+	git fetch upstream
+	git rebase upstream/main
+
+set_version:
+	./scripts/version
 
 suggestions_production:
 	@echo "\033[0;31m------------------------------------------------------"
