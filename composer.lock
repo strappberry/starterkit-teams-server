@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c446fa23214daff1fe73db5812c2f4cb",
+    "content-hash": "9bd6bc6bf63e3308dede138b4b404a02",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -10276,6 +10276,177 @@
                 }
             ],
             "time": "2024-10-09T05:16:32+00:00"
+        },
+        {
+            "name": "spatie/laravel-package-tools",
+            "version": "1.16.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-package-tools.git",
+                "reference": "c7413972cf22ffdff97b68499c22baa04eddb6a2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/c7413972cf22ffdff97b68499c22baa04eddb6a2",
+                "reference": "c7413972cf22ffdff97b68499c22baa04eddb6a2",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^9.28|^10.0|^11.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5",
+                "orchestra/testbench": "^7.7|^8.0",
+                "pestphp/pest": "^1.22",
+                "phpunit/phpunit": "^9.5.24",
+                "spatie/pest-plugin-test-time": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\LaravelPackageTools\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tools for creating Laravel packages",
+            "homepage": "https://github.com/spatie/laravel-package-tools",
+            "keywords": [
+                "laravel-package-tools",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-package-tools/issues",
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.16.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-08-27T18:56:10+00:00"
+        },
+        {
+            "name": "strappberry/devkillerinator",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/strappberry/devkillerinator.git",
+                "reference": "c2a905b194f65fdcfa5cec20ccfc3d20b4eb0931"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/strappberry/devkillerinator/zipball/c2a905b194f65fdcfa5cec20ccfc3d20b4eb0931",
+                "reference": "c2a905b194f65fdcfa5cec20ccfc3d20b4eb0931",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^10.0||^11.0",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.16"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.14",
+                "nunomaduro/collision": "^8.1.1||^7.10.0",
+                "orchestra/testbench": "^9.0.0||^8.22.0",
+                "pestphp/pest": "^2.34",
+                "pestphp/pest-plugin-arch": "^2.7",
+                "pestphp/pest-plugin-laravel": "^2.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Strappberry\\Devkillerinator\\DevkillerinatorServiceProvider"
+                    ],
+                    "aliases": {
+                        "Devkillerinator": "Strappberry\\Devkillerinator\\Facades\\Devkillerinator"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Strappberry\\Devkillerinator\\": "src/",
+                    "Strappberry\\Devkillerinator\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Strappberry\\Devkillerinator\\Tests\\": "tests/",
+                    "Workbench\\App\\": "workbench/app/"
+                }
+            },
+            "scripts": {
+                "post-autoload-dump": [
+                    "@composer run prepare"
+                ],
+                "clear": [
+                    "@php vendor/bin/testbench package:purge-devkillerinator --ansi"
+                ],
+                "prepare": [
+                    "@php vendor/bin/testbench package:discover --ansi"
+                ],
+                "build": [
+                    "@composer run prepare",
+                    "@php vendor/bin/testbench workbench:build --ansi"
+                ],
+                "start": [
+                    "Composer\\Config::disableProcessTimeout",
+                    "@composer run build",
+                    "@php vendor/bin/testbench serve"
+                ],
+                "analyse": [
+                    "vendor/bin/phpstan analyse"
+                ],
+                "test": [
+                    "vendor/bin/pest"
+                ],
+                "test-coverage": [
+                    "vendor/bin/pest --coverage"
+                ],
+                "format": [
+                    "vendor/bin/pint"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Strappberry",
+                    "email": "contacto@strappberry.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Codename 007",
+            "homepage": "https://github.com/strappberry/devkillerinator",
+            "keywords": [
+                "Strappberry",
+                "devkillerinator",
+                "laravel"
+            ],
+            "support": {
+                "source": "https://github.com/strappberry/devkillerinator/tree/0.0.1",
+                "issues": "https://github.com/strappberry/devkillerinator/issues"
+            },
+            "funding": [
+                {
+                    "type": "github",
+                    "url": "https://github.com/Strappberry"
+                }
+            ],
+            "time": "2024-10-17T20:17:30+00:00"
         },
         {
             "name": "symfony/yaml",
