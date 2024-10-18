@@ -12,15 +12,15 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <!-- Scripts -->
+    <tallstackui:script />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    <!-- Styles -->
     @livewireStyles
 </head>
 
 <body class="font-sans antialiased">
     <x-banner />
+    <x-ts-dialog />
+    <x-ts-toast />
 
     <div x-data="{
         mobileSidebarOpen: false,
@@ -35,7 +35,7 @@
             class="mx-auto flex min-h-screen w-full min-w-[320px] flex-col bg-gray-200/60 dark:bg-slate-900 dark:text-slate-200 lg:ps-64">
             <!-- Page Sidebar -->
             <nav id="page-sidebar"
-                class="dark:lg:border-primary-700/15 fixed bottom-0 start-0 top-0 z-50 flex h-full w-80 flex-col bg-white transition-transform duration-500 ease-out dark:bg-slate-800 lg:w-64 lg:translate-x-0 lg:border-primary-900/10 ltr:lg:translate-x-0 ltr:lg:border-r-4 rtl:lg:translate-x-0 rtl:lg:border-l-4"
+                class="dark:lg:border-primary-700/15 fixed bottom-0 start-0 top-0 z-40 flex h-full w-80 flex-col bg-white transition-transform duration-500 ease-out dark:bg-slate-800 lg:w-64 lg:translate-x-0 lg:border-primary-900/10 ltr:lg:translate-x-0 ltr:lg:border-r-4 rtl:lg:translate-x-0 rtl:lg:border-l-4"
                 x-bind:class="{
                     'ltr:-translate-x-full rtl:translate-x-full': !mobileSidebarOpen,
                     'translate-x-0': mobileSidebarOpen,
@@ -127,7 +127,7 @@
                         <div x-show="dropdownOpen" @click.away="dropdownOpen=false"
                             x-transition:enter="ease-out duration-200" x-transition:enter-start="-translate-y-2"
                             x-transition:enter-end="translate-y-0"
-                            class="absolute bottom-[60px] left-1/2 z-50 mt-12 w-56 -translate-x-1/2" x-cloak>
+                            class="absolute bottom-[60px] left-1/2 z-40 mt-12 w-56 -translate-x-1/2" x-cloak>
                             <div
                                 class="mt-1 rounded-md border border-gray-200 bg-white p-1 text-neutral-700 dark:border-gray-500 dark:bg-gray-800">
                                 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"

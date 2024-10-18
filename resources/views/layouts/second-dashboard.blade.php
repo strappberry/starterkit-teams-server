@@ -12,15 +12,16 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <!-- Scripts -->
+    <tallstackui:script />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    <!-- Styles -->
     @livewireStyles
 </head>
 
 <body class="font-sans antialiased">
     <x-banner />
+    <x-ts-dialog />
+    <x-ts-toast />
+
     <div x-data="{
         mobileSidebarOpen: false,
         desktopSidebarOpen: true,
@@ -37,7 +38,7 @@
             x-bind:class="{ 'lg:ps-64': desktopSidebarOpen }">
             <!-- Page Sidebar -->
             <nav id="page-sidebar"
-                class="fixed bottom-0 start-0 top-0 z-50 flex h-full w-full flex-col border-transparent bg-white transition-transform duration-300 ease-out ltr:border-r rtl:border-l dark:border-gray-700 dark:bg-gray-800 lg:w-64"
+                class="fixed bottom-0 start-0 top-0 z-40 flex h-full w-full flex-col border-transparent bg-white transition-transform duration-300 ease-out ltr:border-r rtl:border-l dark:border-gray-700 dark:bg-gray-800 lg:w-64"
                 x-bind:class="{
                     'ltr:-translate-x-full rtl:translate-x-full': !mobileSidebarOpen,
                     'translate-x-0': mobileSidebarOpen,

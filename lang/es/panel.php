@@ -34,6 +34,7 @@ return [
         'agregar' => 'Agregar usuario',
         'desea_eliminar' => '¿Desea eliminar el usuario?',
         'editar' => 'Editar usuario',
+        'eliminado_correctamente' => 'Usuario eliminado correctamente',
         'permisos' => 'Permisos',
         'seleccione_role' => 'Seleccione un rol',
         'usuario' => 'Usuario',

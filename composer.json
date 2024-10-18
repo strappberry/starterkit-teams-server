@@ -18,7 +18,8 @@
         "livewire/livewire": "^3.0",
         "rappasoft/laravel-livewire-tables": "^3.4",
         "sentry/sentry-laravel": "^4.9",
-        "spatie/laravel-permission": "^6.9"
+        "spatie/laravel-permission": "^6.9",
+        "tallstackui/tallstackui": "^1.35"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.1",

@@ -10,8 +10,7 @@
     @can('eliminar equipos')
         @if (!$isMain)
             <x-ui.tooltip :text="__('panel.general.eliminar')">
-                <button type="button" wire:confirm="{{ __('panel.general.desea_eliminar') }}"
-                    wire:click="delete({{ $id }})">
+                <button type="button" wire:click="delete({{ $id }})">
                     @svg('heroicon-o-trash', 'w-5 h-5 text-red-800 dark:text-red-400')
                 </button>
             </x-ui.tooltip>

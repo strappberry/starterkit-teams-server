@@ -73,6 +73,9 @@ make install_dev
 
 ## Componentes
 
+- [https://tallstackui.com/docs/get-started](https://tallstackui.com/docs/get-started)
+- [Interacción, dialogos y alertas](https://tallstackui.com/docs/interaction/toast)
+
 #### Card
 ```blade
 <x-card class="p-4 space-y-4">

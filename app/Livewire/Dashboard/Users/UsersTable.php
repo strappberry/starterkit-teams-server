@@ -8,11 +8,16 @@ use Illuminate\Database\Eloquent\Builder;
 use Livewire\Attributes\Locked;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use TallStackUi\Traits\Interactions;
 
 class UsersTable extends DataTableComponent
 {
+    use Interactions;
+
     #[Locked]
     public Team $team;
+
+    public $deleteId;
 
     public function builder(): Builder
     {
@@ -53,11 +58,31 @@ class UsersTable extends DataTableComponent
         ];
     }
 
-    public function delete($id)
+    public function confirmDelete($id)
     {
-        $user = User::find($id);
+        $this->deleteId = $id;
+
+        $this->dialog()
+            ->question(__('panel.general.eliminar'), __('panel.usuarios.desea_eliminar'))
+            ->confirm(__('Yes'), 'deleteConfirmed')
+            ->cancel(__('No'), 'deleteCancelled')
+            ->send();
+    }
+
+    public function deleteCancelled()
+    {
+        $this->deleteId = null;
+    }
+
+    public function deleteConfirmed()
+    {
+        $user = User::find($this->deleteId);
 
         if (! $user) {
+            return;
+        }
+
+        if (! $this->team->hasUser($user)) {
             return;
         }
 
@@ -68,5 +93,7 @@ class UsersTable extends DataTableComponent
         } else {
             $user->delete();
         }
+
+        $this->toast()->success(__('panel.usuarios.eliminado_correctamente'))->send();
     }
 }

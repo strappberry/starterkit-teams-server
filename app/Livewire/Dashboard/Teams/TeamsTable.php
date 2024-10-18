@@ -6,9 +6,12 @@ use App\Models\Team;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use TallStackUi\Traits\Interactions;
 
 class TeamsTable extends DataTableComponent
 {
+    use Interactions;
+
     public function builder(): Builder
     {
         return Team::query()
@@ -45,6 +48,9 @@ class TeamsTable extends DataTableComponent
 
     public function delete($id)
     {
+        $this->toast()->success(
+            'TODO: implementar'
+        )->send();
         // TODO: implementar la eliminación de un equipo
         // considerar usuarios en multiples equipos
     }
