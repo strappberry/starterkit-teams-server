@@ -15,9 +15,11 @@
         "laravel/jetstream": "^5.2",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
+        "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^3.0",
         "rappasoft/laravel-livewire-tables": "^3.4",
         "sentry/sentry-laravel": "^4.9",
+        "spatie/db-dumper": "^3.7",
         "spatie/laravel-permission": "^6.9",
         "tallstackui/tallstackui": "^1.35"
     },

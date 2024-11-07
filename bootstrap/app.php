@@ -25,4 +25,8 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions) {
         Integration::handles($exceptions);
-    })->create();
+    })
+    ->withSchedule(function ($schedule) {
+        $schedule->command('strappberry:db-backup')->daily();
+    })
+    ->create();
