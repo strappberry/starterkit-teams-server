@@ -43,7 +43,7 @@ class BackupDatabase extends Command
                 ->setDbName(config('database.connections.mysql.database'))
                 ->setUserName(config('database.connections.mysql.username'))
                 ->setPassword(config('database.connections.mysql.password'))
-                ->addExtraOption('--column-statistics=0')
+                // ->addExtraOption('--column-statistics=0') // descomentar en caso de error de compatibilidad con mysql
                 ->dumpToFile($path);
 
             // zip the file
