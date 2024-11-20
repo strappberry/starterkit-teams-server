@@ -43,6 +43,9 @@ return [
      |
      */
     'permissions' => [
-        //
+        'configuracion' => [
+            'ver configuracion',
+            'editar configuracion',
+        ],
     ],
 ];

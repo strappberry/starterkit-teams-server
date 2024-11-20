@@ -166,5 +166,9 @@
     "Your password has been reset!": "¡Tu contraseña ha sido restablecida!",
     "usuario": "Usuario",
     "Log out": "Cerrar sesión",
-    "super_admin": "Super Administrador"
+    "super_admin": "Super Administrador",
+    "ver configuracion": "ver configuración",
+    "crear configuracion": "crear configuración",
+    "editar configuracion": "editar configuración",
+    "eliminar configuracion": "eliminar configuración"
 }

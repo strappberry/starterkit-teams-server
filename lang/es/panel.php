@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'configuracion' => [
+        'configuracion' => 'Configuración',
+    ],
+
     'equipos' => [
         'actuar_como' => 'Actuar como',
         'agregar' => 'Agregar equipo',
@@ -23,7 +27,9 @@ return [
         'guardar' => 'Guardar',
         'inicio' => 'Inicio',
         'ir_pagina_principal' => 'Ir a la página principal',
+        'mes' => 'Mes',
         'nombre' => 'Nombre',
+        'año' => 'Año',
     ],
 
     'modulos' => [

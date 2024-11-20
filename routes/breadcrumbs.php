@@ -8,6 +8,12 @@ Breadcrumbs::for('dashboard', function (BreadcrumbTrail $trail) {
     $trail->push(__('Dashboard'), route('dashboard'));
 });
 
+// dashboard > settings
+Breadcrumbs::for('dashboard.settings.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push(__('panel.configuracion.configuracion'), route('dashboard.settings.index'));
+});
+
 // dashboard > users
 Breadcrumbs::for('dashboard.users.index', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');

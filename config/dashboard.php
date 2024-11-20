@@ -39,5 +39,12 @@ return [
             'active_route' => 'dashboard.users.*',
             'permission' => 'ver usuarios',
         ],
+        [
+            'label' => 'panel.configuracion.configuracion',
+            'icon' => 'cog-8-tooth',
+            'route' => 'dashboard.settings.index',
+            'active_route' => 'dashboard.settings.*',
+            'permission' => 'ver configuracion',
+        ],
     ],
 ];

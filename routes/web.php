@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\SettingsController;
 use App\Http\Controllers\Dashboard\TeamsController;
 use App\Http\Controllers\Dashboard\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,18 @@ Route::middleware([
     'teams',
 ])->group(function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
+
+    Route::prefix('dashboard/settings')
+        ->middleware(['module:configuracion'])
+        ->as('dashboard.settings.')
+        ->controller(SettingsController::class)
+        ->group(function () {
+            Route::middleware('permission:ver configuracion')->get('/', 'index')->name('index');
+            Route::middleware('permission:editar configuracion')
+                ->get('/subscription/{slug}', 'redirecToSubscription')->name('redirect-to-subscribe');
+            Route::middleware('permission:editar configuracion')
+                ->get('/manage-subscription', 'redirectToBilling')->name('redirectToBilling');
+        });
 
     Route::prefix('dashboard/teams')
         ->middleware(['module:equipos'])

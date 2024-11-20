@@ -28,6 +28,10 @@ class ModulesTableSeeder extends Seeder
                 'main_team' => false,
                 'roles' => [Roles::SUPER_ADMIN->value, Roles::ADMIN->value],
             ],
+            3 => [
+                'name' => 'Configuración',
+                'slug' => 'configuracion',
+            ],
         ];
 
         foreach ($modules as $id => $module) {

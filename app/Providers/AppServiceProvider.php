@@ -7,6 +7,7 @@ use App\Models\User;
 use Gate;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
+use TallStackUi\Facades\TallStackUi;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
         ]);
 
         $this->setGates();
+
+        $this->customTallstack();
     }
 
     private function setGates()
@@ -45,5 +48,15 @@ class AppServiceProvider extends ServiceProvider
                 ->where('slug', $module)
                 ->exists();
         });
+    }
+
+    private function customTallstack()
+    {
+        TallStackUi::personalize()
+            ->card()
+            ->block([
+                'wrapper.second' => 'dark:bg-dark-800 flex w-full flex-col rounded-lg bg-white border border-gray-200 dark:border-dark-700',
+                'body' => 'text-secondary-700 dark:text-dark-300 grow rounded-b-xl px-3 py-4',
+            ]);
     }
 }

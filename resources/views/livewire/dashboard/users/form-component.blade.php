@@ -49,7 +49,7 @@
                             <label class="flex items-center">
                                 <x-checkbox wire:model="form.permissions" :value="$permission" />
                                 <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">
-                                    {{ ucfirst($permission) }}
+                                    {{ ucfirst(__($permission)) }}
                                 </span>
                             </label>
                         @endforeach
